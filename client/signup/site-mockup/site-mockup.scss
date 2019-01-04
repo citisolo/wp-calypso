@@ -48,6 +48,13 @@
 		width: 60px;
 		background: $gray-light;
 		border-radius: 16px;
+
+		// At small screen sizes "hide" the label
+		// text as its mostly redundent.
+		@include breakpoint( '<660px' ) {
+			color: $gray-light;
+			width: 180px;
+		}
 	}
 }
 
@@ -61,14 +68,16 @@
 	// Mobile body is scrollable and needs to
 	// make room for the chrome.
 	.site-mockup__viewport.is-mobile & {
-		margin: 0 6px 6px;
+		margin: 0 6px 24px 6px;
 		border: 1px solid $gray-lighten-20;
 		border-radius: 3px;
+/*
 		max-height: 400px;
 
 		@include breakpoint( '<660px' ) {
 			max-height: 600px;
 		}
+*/
 	}
 }
 
