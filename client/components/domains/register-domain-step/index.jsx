@@ -345,6 +345,7 @@ class RegisterDomainStep extends React.Component {
 			suggestionError,
 			suggestionErrorData,
 		} = this.state;
+
 		const { message: suggestionMessage, severity: suggestionSeverity } = showSuggestionNotice
 			? getAvailabilityNotice( lastDomainSearched, suggestionError, suggestionErrorData )
 			: {};
@@ -1014,8 +1015,9 @@ class RegisterDomainStep extends React.Component {
 				.then( status => {
 					this.setState( { pendingCheckSuggestion: null } );
 					if ( status ) {
-						this.showAvailabilityErrorMessage( domain, status, {} );
-						// console.log( status );
+						this.showAvailabilityErrorMessage( domain, status, {
+							availabilityPreCheck: true,
+						} );
 					} else {
 						this.props.onAddDomain( suggestion );
 					}
